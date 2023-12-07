@@ -1,0 +1,63 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salaya</title>
+    <link rel="stylesheet" href="styleKalkulator.css" />
+  </head>
+  <body>
+    <header>
+      <h1><span>SALAYA</span></h1>
+      <p>( Sagala Aya )</p>
+    </header>
+    <section>
+      <h3>Kalkulator</h3>
+      <hr />
+      <div id="kalkulator">
+        <div class="buttons">
+          <div id="display">10</div>
+          <span id="clear">Clear</span>
+          <span id="del">del</span>
+          <span id="%">%</span>
+          <span>/</span>
+          <span>7</span>
+          <span>8</span>
+          <span>9</span>
+          <span>*</span>
+          <span>4</span>
+          <span>5</span>
+          <span>6</span>
+          <span>-</span>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>+</span>
+          <span>0</span>
+          <span>00</span>
+          <span>.</span>
+          <span id="equal">=</span>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const display = document.getElementById("display");
+      const btn = document.querySelectorAll(".buttons span");
+
+      for (let i = 0; i < btn.length; i++) {
+        btn[i].addEventListener("click", () => {
+          if (btn[i].innerText == "Clear") {
+            display.innerHTML = "";
+          } else if (btn[i].innerText == "=") {
+            display.innerHTML = eval(display.innerText);
+          } else if (btn[i].innerText == "del") {
+            display.innerHTML = display.innerText.slice(0, -1);
+          } else {
+            display.innerHTML += btn[i].innerText;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

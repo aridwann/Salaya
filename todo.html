@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salaya</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="styleTodo.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Selamat Datang <br />di <span>SALAYA</span></h1>
+      <p>( Sagala Aya )</p>
+    </header>
+    <section>
+      <h3>Todo List</h3>
+      <hr />
+      <h4>
+        Todo<span onclick="add()" class="material-symbols-outlined">
+          add_circle
+        </span>
+      </h4>
+
+      <ul id="todoList">
+        <li>
+          <p>Ini list yang harus dilakukan</p>
+          <span
+            class="material-symbols-outlined"
+            style="color: rgb(6, 193, 6); font-weight: bolder"
+            onclick="done()"
+          >
+            done
+          </span>
+          <span
+            class="material-symbols-outlined"
+            style="color: red"
+            onclick="del()"
+          >
+            delete
+          </span>
+        </li>
+      </ul>
+      <h4>Done</h4>
+      <ul id="doneList">
+        <li>
+          <p>Ini list yang sudah dilakukan</p>
+          <span
+            class="material-symbols-outlined"
+            style="color: white; font-weight: bolder"
+            onclick="todo()"
+          >
+            remove
+          </span>
+          <span
+            class="material-symbols-outlined"
+            style="color: red"
+            onclick="del()"
+          >
+            delete
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <script>
+      const todoList = document.getElementById("todoList");
+      const doneList = document.getElementById("doneList");
+
+      const add = () => {
+        let addTodo = prompt("Add Todo :");
+        let todo = document.createElement("li");
+        todo.innerHTML = `
+        <p>${addTodo}</p>
+        <span
+          class="material-symbols-outlined"
+          style="color: rgb(6, 193, 6); font-weight: bolder" onclick="done()"
+        >
+          done
+        </span>
+        <span class="material-symbols-outlined" style="color: red" onclick="del()">
+          delete
+        </span>`;
+        todoList.append(todo);
+      };
+      const done = () => {
+        let getParent = event.target.parentNode;
+        let todoText = getParent.getElementsByTagName("p")[0];
+        getParent.innerHTML = "";
+        let todo = document.createElement("li");
+        todo.innerHTML = `
+        <p>${todoText.textContent}</p>
+          <span
+            class="material-symbols-outlined"
+            style="color: white; font-weight: bolder" onclick="todo()"
+          >
+            remove
+          </span>
+          <span class="material-symbols-outlined" style="color: red"  onclick="del()">
+            delete
+          </span>`;
+        doneList.append(todo);
+      };
+      const del = () => {
+        let getParent = event.target.parentNode;
+        getParent.innerHTML = "";
+      };
+      const todo = () => {
+        let getParent = event.target.parentNode;
+        let todoText = getParent.getElementsByTagName("p")[0];
+        getParent.innerHTML = "";
+        let todo = document.createElement("li");
+        todo.innerHTML = `
+        <p>${todoText.textContent}</p>
+        <span
+          class="material-symbols-outlined"
+          style="color: rgb(6, 193, 6); font-weight: bolder" onclick="done()"
+        >
+          done
+        </span>
+        <span class="material-symbols-outlined" style="color: red" onclick="del()">
+          delete
+        </span>`;
+        todoList.append(todo);
+      };
+    </script>
+  </body>
+</html>

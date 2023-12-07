@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salaya</title>
+    <link rel="stylesheet" href="styleCounter.css" />
+  </head>
+  <body>
+    <header>
+      <h1><span>SALAYA</span></h1>
+      <p>( Sagala Aya )</p>
+    </header>
+    <section>
+      <h3>Counter</h3>
+      <hr />
+      <div id="display">0</div>
+      <div class="buttons">
+        <button onclick="min()">-</button>
+        <button onclick="plus()">+</button>
+      </div>
+      <button id="autoBtn" onclick="auto()">Auto</button>
+      <button
+        id="resetBtn"
+        onclick="reset()"
+        style="background-color: rgb(151, 18, 18)"
+      >
+        Reset
+      </button>
+    </section>
+
+    <script>
+      const display = document.getElementById("display");
+      const autoBtn = document.getElementById("autoBtn");
+      let set;
+
+      const plus = () => {
+        let count = parseInt(display.textContent) + 1;
+        display.innerText = count;
+      };
+      const min = () => {
+        if (parseInt(display.textContent) > 0) {
+          let count = parseInt(display.textContent) - 1;
+          display.innerText = count;
+        }
+      };
+      const auto = () => {
+        autoBtn.innerText = "Stop";
+        autoBtn.setAttribute("onclick", "stop()");
+        set = setInterval(() => {
+          let count = parseInt(display.textContent) + 1;
+          display.innerText = count;
+        }, 1000);
+      };
+      const stop = () => {
+        autoBtn.innerText = "Auto";
+        autoBtn.setAttribute("onclick", "auto()");
+        clearInterval(set);
+      };
+      const reset = () => {
+        display.innerText = "0";
+      };
+    </script>
+  </body>
+</html>

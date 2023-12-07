@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salaya</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <p id="jam"></p>
+    <header>
+      <h1>Selamat Datang <br />di <span>SALAYA</span></h1>
+      <p>( Sagala Aya )</p>
+    </header>
+    <section>
+      <h3>Pilih Layanan</h3>
+      <hr />
+      <a href="counter.html">
+        <button>
+          <h5>Counter</h5>
+          <p>Counter (Penghitung), bisa manual ataupun otomatis.</p>
+        </button>
+      </a>
+      <a href="todo.html">
+        <button>
+          <h5>To Do List</h5>
+          <p>
+            To Do List (List aktivitas), catat aktivitas yang sudah atau belum
+            dikerjakan.
+          </p>
+        </button>
+      </a>
+      <a href="kalkulator.html">
+        <button>
+          <h5>Kalkulator</h5>
+          <p>Who the f***, don't know kalkulator</p>
+        </button>
+      </a>
+    </section>
+
+    <script>
+      const jam = document.getElementById("jam");
+      setInterval(() => {
+        let date = new Date();
+        jam.innerText = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()}`;
+      }, 1000);
+    </script>
+  </body>
+</html>
